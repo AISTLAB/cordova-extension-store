@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="cordova-extention-store" version="0.0.1"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>extentions</name>
+    <js-module name="store" src="www/store.js">
+        <clobbers target="cordova.extention.store" />
+    </js-module>
+    <!-- android -->
+    <platform name="android">
+        <!-- package path -->
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="ExtentionStore">
+                <param name="android-package" value="com.aiesst.extentions.ExtentionStore" />
+            </feature>
+        </config-file>
+        <source-file src="src/android/ExtentionStore.java" target-dir="src/com/aiesst/extentions/" />
+        <source-file src="src/android/Extention.java" target-dir="src/com/aiesst/extentions/" />
+        <source-file src="src/android/FinishActivity.java" target-dir="src/com/aiesst/extentions/" />
+        <!-- android permission description -->
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+    </platform>
+    <!-- ios -->
+</plugin>
