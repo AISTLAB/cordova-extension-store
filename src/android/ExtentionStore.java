@@ -44,7 +44,7 @@ public class ExtentionStore extends CordovaPlugin {
             extention = new GetStoreData(this.cordova.getActivity());
             //给java传递数据
         } else if ("setStoreData".equals(action)) {
-            extention = new setStoreData(this.cordova.getActivity());
+            extention = new SetStoreData(this.cordova.getActivity());
         }
 
         if (extention != null) {

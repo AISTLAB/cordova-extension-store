@@ -11,8 +11,8 @@ import java.util.function.BiConsumer;
  * Created by ychost on 17-6-22.
  */
 
-public class setStoreData extends Extention {
-    public setStoreData(Activity activity) {
+public class SetStoreData extends Extention {
+    public SetStoreData(Activity activity) {
         super(activity);
     }
 
