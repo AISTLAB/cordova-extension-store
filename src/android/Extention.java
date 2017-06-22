@@ -17,6 +17,7 @@ public abstract class Extention {
     public Extention(Activity activity) {
         this.mActivity = activity;
     }
-    abstract boolean execute(String mapParams, CallbackContext callbackContext);
+    abstract boolean execute(String strParams, CallbackContext callbackContext);
+
 
 }

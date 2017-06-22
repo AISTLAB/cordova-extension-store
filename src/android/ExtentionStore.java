@@ -18,21 +18,41 @@ import java.util.Map;
 
 public class ExtentionStore extends CordovaPlugin {
 
+    public static CallbackContext jsFunction;
 
     public boolean execute(String action, JSONArray rawArgs, CallbackContext callbackContext) throws JSONException {
+        Extention extention = null;
+        boolean result = false;
         String strParams = rawArgs.getString(0);
-        Log.d("Swiftpay", "接受参数: " + strParams);
-        Map<String, String> mapParams;
-        try {
-            mapParams = jsonToMap(strParams);
-        } catch (Exception e) {
-            callbackContext.error("json格式有误");
-            return false;
+        Log.d("cordova extention", "接受方法： " + action);
+        Log.d("cordova extention", "接受参数: " + strParams);
+
+        //绑定js的调回钩子，让java可以直接调用js
+        if ("jsFunction".equals(action)) {
+            ExtentionStore.jsFunction = callbackContext;
+            return true;
+            //退出持有该webview的fragment
+        } else if ("hide".equals(action)) {
+            extention = new CordovaFragmentManager(this.cordova.getActivity());
         }
-        if ("finishActivity".toUpperCase().equals(action.toUpperCase())) {
-            return new FinishActivity(this.cordova.getActivity()).execute(strParams, callbackContext);
+
+        //退出持有该webview的Activity
+        else if ("exit".equals(action)) {
+            extention = new CordovaActivityManager(this.cordova.getActivity());
+            //获取java的数据
+        } else if ("getStoreData".equals(action)) {
+            extention = new GetStoreData(this.cordova.getActivity());
+            //给java传递数据
+        } else if ("setStoreData".equals(action)) {
+            extention = new setStoreData(this.cordova.getActivity());
         }
-        return true;
+
+        if (extention != null) {
+            result = extention.execute(strParams, callbackContext);
+            extention = null;
+        }
+
+        return result;
     }
 
     /**

@@ -9,18 +9,18 @@ import org.apache.cordova.CallbackContext;
  * Created by ychost on 17-6-21.
  */
 
-public class FinishActivity extends Extention {
+public class CordovaActivityManager extends Extention {
 
     public final static int CordovaReturn = 8700;
 
-    public FinishActivity(Activity activity) {
+    public CordovaActivityManager(Activity activity) {
         super(activity);
     }
 
 
-    public boolean execute(String paramsStr, CallbackContext callbackContext) {
+    public boolean execute(String strParams, CallbackContext callbackContext) {
         Intent intent = new Intent();
-        intent.putExtra("params", paramsStr);
+        intent.putExtra("params", strParams);
         this.mActivity.setResult(CordovaReturn, intent);
         callbackContext.success();
         this.mActivity.finish();
