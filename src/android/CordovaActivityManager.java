@@ -9,7 +9,7 @@ import org.apache.cordova.CallbackContext;
  * Created by ychost on 17-6-21.
  */
 
-public class CordovaActivityManager extends Extention {
+class CordovaActivityManager extends Extention {
 
     public final static int CordovaReturn = 8700;
 

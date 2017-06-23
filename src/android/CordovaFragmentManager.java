@@ -14,7 +14,7 @@ import org.json.JSONObject;
  * Created by ychost on 17-6-22.
  */
 
-public class CordovaFragmentManager extends Extention {
+class CordovaFragmentManager extends Extention {
     static final String TAG = "CordovaFragmentManager";
     public static final String FRAGMENT_TAG = "PaySystemFragment";
     public static String FROM_FRAGMENT_TAG = "";

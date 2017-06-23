@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by ychost on 17-6-21.
  */
 
-public abstract class Extention {
+abstract class Extention {
 
     protected Activity mActivity;
 

@@ -7,7 +7,7 @@ import java.util.Map;
  * Created by ychost on 17-6-22.
  */
 
-public class JavaDataStore {
+class JavaDataStore {
     private static Map<String, String> allData = new HashMap<String, String>();
 
     public static void setData(String key, String value) {

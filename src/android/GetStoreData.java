@@ -11,7 +11,7 @@ import java.util.Map;
  * Created by ychost on 17-6-22.
  */
 
-public class GetStoreData extends Extention {
+class GetStoreData extends Extention {
     public GetStoreData(Activity activity) {
         super(activity);
     }
