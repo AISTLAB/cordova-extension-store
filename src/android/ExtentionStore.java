@@ -49,7 +49,6 @@ public class ExtentionStore extends CordovaPlugin {
 
         if (extention != null) {
             result = extention.execute(strParams, callbackContext);
-            extention = null;
         }
 
         return result;

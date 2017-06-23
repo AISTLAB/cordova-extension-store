@@ -15,18 +15,12 @@ import org.json.JSONObject;
  */
 
 public class CordovaFragmentManager extends Extention {
-    public static final String TAG = "CordovaFragmentManager";
-
-    static CordovaFragment webFragment;
-    static Fragment fromFragment;
+    static final String TAG = "CordovaFragmentManager";
+    public static final String FRAGMENT_TAG = "PaySystemFragment";
+    public static String FROM_FRAGMENT_TAG = "";
 
     public CordovaFragmentManager(Activity activity) {
         super(activity);
-    }
-
-
-    public static CordovaFragment getFragment() {
-        return CordovaFragmentManager.webFragment;
     }
 
     @Override
@@ -36,32 +30,43 @@ public class CordovaFragmentManager extends Extention {
 
     private boolean hideFragment(CallbackContext callbackContext) {
         FragmentTransaction transaction = this.mActivity.getFragmentManager().beginTransaction();
-        if (CordovaFragmentManager.webFragment == null) {
+        Fragment webFragment = this.mActivity.getFragmentManager().findFragmentByTag(FRAGMENT_TAG);
+        if (webFragment == null) {
             transaction.addToBackStack(null);
         } else {
             transaction.hide(webFragment);
         }
-        transaction.show(fromFragment);
+        Fragment fromFragment = this.mActivity.getFragmentManager().findFragmentByTag(FROM_FRAGMENT_TAG);
+        if (fromFragment != null) {
+            transaction.show(fromFragment);
+        }
         transaction.commit();
-        fromFragment = null;
         callbackContext.success();
-
         return false;
 
     }
 
     /**
-     * 启动支付系统
+     * 开启支付系统界面,
      *
-     * @param activity     宿主activity
-     * @param layoutId     呈现fragment的id
-     * @param token        支付系统需要的token
-     * @param fromFragment 启动支付系统时候所在的fragment
+     * @param activity                   宿主activity
+     * @param fromFragmentTag            跳转界面的fragment的tag
+     * @param layoutId                   界面布局id
+     * @param token                      支付系统需要的token 需要从服务器获取
      */
-    public static void startPaySystem(Activity activity, int layoutId, Fragment fromFragment, String token) {
+    public static void startPaySystem(Activity activity, String fromFragmentTag, int layoutId, String token) {
         FragmentTransaction transaction = activity.getFragmentManager().beginTransaction();
-        CordovaFragmentManager.fromFragment = fromFragment;
-        transaction.hide(fromFragment);
+        //用户自定义配置
+//        configPaySystemTransaction.config(transaction);
+        //隐藏跳转的fragment
+        FROM_FRAGMENT_TAG = fromFragmentTag;
+        Fragment fromFragment = activity.getFragmentManager().findFragmentByTag(fromFragmentTag);
+        if (fromFragment != null) {
+            transaction.hide(fromFragment);
+        }
+
+        //显示支付系统的fragment
+        Fragment webFragment = activity.getFragmentManager().findFragmentByTag(FRAGMENT_TAG);
         if (webFragment != null && webFragment.isAdded()) {
             transaction.show(webFragment);
             try {
@@ -78,9 +83,14 @@ public class CordovaFragmentManager extends Extention {
             webFragment = new CordovaFragment();
             //将token放入js仓库(支付系统使用的仓库)
             JsDataStore.setData("token", token);
-            transaction.add(layoutId, webFragment);
+            transaction.add(layoutId, webFragment, FRAGMENT_TAG);
         }
         transaction.commit();
+    }
+
+
+    public interface ConfigPaySystemTransaction {
+        void config(FragmentTransaction transaction);
     }
 
 
