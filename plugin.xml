@@ -30,4 +30,14 @@
         </config-file>
     </platform>
     <!-- ios -->
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="ExtentionStore">
+                <param name="ios-package" value="ExtentionStore"/>
+            </feature>
+        </config-file>
+        <source-file src="src/ios/CordovaManager.m"/>
+        <source-file src="src/ios/ExtentionStore.m"/>
+        <source-file src="src/ios/Store.m"/>
+    </platform>
 </plugin>
