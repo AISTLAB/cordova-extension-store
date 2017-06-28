@@ -22,6 +22,7 @@
         <source-file src="src/android/JavaDataStore.java" target-dir="src/com/aiesst/extentions/" />
         <source-file src="src/android/JsDataStore.java" target-dir="src/com/aiesst/extentions/" />
         <source-file src="src/android/SetStoreData.java" target-dir="src/com/aiesst/extentions/" />
+        <source-file src="src/android/SweetsPaySDK.java" target-dir="src/com/aiesst/"/>
         <!-- android permission description -->
         <config-file parent="/*" target="AndroidManifest.xml">
             <uses-permission android:name="android.permission.INTERNET" />

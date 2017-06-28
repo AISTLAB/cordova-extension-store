@@ -1,4 +1,4 @@
-package com.aiesst.extentions;
+package com.aiesst;
 
 import android.app.Activity;
 import android.util.Log;
@@ -8,10 +8,9 @@ import org.json.JSONObject;
 /**
  * Created by ychost on 17-6-23.
  */
-
 public final class SweetsPaySDK {
 
-    static final String TAG = "SweetsPaySDK";
+    static final String TAG = "SweetsSDK";
 
     /**
      * 开启支付系统界面,
