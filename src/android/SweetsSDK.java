@@ -1,14 +1,12 @@
-package com.aiesst;
+package com.aiesst.extensions;
 
 import android.app.Activity;
-import android.util.Log;
-
-import org.json.JSONObject;
 
 /**
+ * Sweets对接部分
  * Created by ychost on 17-6-23.
  */
-public final class SweetsPaySDK {
+public final class SweetsSDK {
 
     static final String TAG = "SweetsSDK";
 
@@ -22,24 +20,6 @@ public final class SweetsPaySDK {
      */
     public static void StartPaymentFragment(Activity activity, String fromFragmentTag, int layoutId, String token) {
         CordovaFragmentManager.startPaySystem(activity, fromFragmentTag, layoutId, token);
-    }
-
-    /**
-     * 更新token
-     *
-     * @param token
-     */
-    public static void updateToken(String token) {
-        try {
-            JSONObject json = new JSONObject();
-            json.put("cmd", "token");
-            json.put("data", token);
-            //直接调用js的方法，将token发送过去
-            ExtentionStore.jsFunction.success(json.toString());
-        } catch (Exception e) {
-            Log.e(TAG, "更新token异常");
-        }
-        ExtentionStore.jsFunction.error("更新token异常");
     }
 
     /**

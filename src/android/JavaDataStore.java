@@ -1,4 +1,4 @@
-package com.aiesst.extentions;
+package com.aiesst.extensions;
 
 import java.util.HashMap;
 import java.util.Map;

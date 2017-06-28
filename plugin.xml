@@ -14,15 +14,15 @@
                 <param name="android-package" value="com.aiesst.extentions.ExtentionStore" />
             </feature>
         </config-file>
-        <source-file src="src/android/CordovaActivityManager.java" target-dir="src/com/aiesst/extentions/" />
-        <source-file src="src/android/CordovaFragmentManager.java" target-dir="src/com/aiesst/extentions/" />
-        <source-file src="src/android/Extention.java" target-dir="src/com/aiesst/extentions/" />
-        <source-file src="src/android/ExtentionStore.java" target-dir="src/com/aiesst/extentions/" />
-        <source-file src="src/android/GetStoreData.java" target-dir="src/com/aiesst/extentions/" />
-        <source-file src="src/android/JavaDataStore.java" target-dir="src/com/aiesst/extentions/" />
-        <source-file src="src/android/JsDataStore.java" target-dir="src/com/aiesst/extentions/" />
-        <source-file src="src/android/SetStoreData.java" target-dir="src/com/aiesst/extentions/" />
-        <source-file src="src/android/SweetsSDK.java" target-dir="src/com/aiesst/"/>
+        <source-file src="src/android/CordovaActivityManager.java" target-dir="src/com/aiesst/extensions/" />
+        <source-file src="src/android/CordovaFragmentManager.java" target-dir="src/com/aiesst/extensions/" />
+        <source-file src="src/android/Extension.java" target-dir="src/com/aiesst/extensions/" />
+        <source-file src="src/android/ExtensionStore.java" target-dir="src/com/aiesst/extensions/" />
+        <source-file src="src/android/GetStoreData.java" target-dir="src/com/aiesst/extensions/" />
+        <source-file src="src/android/JavaDataStore.java" target-dir="src/com/aiesst/extensions/" />
+        <source-file src="src/android/JsDataStore.java" target-dir="src/com/aiesst/extensions/" />
+        <source-file src="src/android/SetStoreData.java" target-dir="src/com/aiesst/extensions/" />
+        <source-file src="src/android/SweetsSDK.java" target-dir="src/com/aiesst/extensions/"/>
         <!-- android permission description -->
         <config-file parent="/*" target="AndroidManifest.xml">
             <uses-permission android:name="android.permission.INTERNET" />

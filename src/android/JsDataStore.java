@@ -1,4 +1,4 @@
-package com.aiesst.extentions;
+package com.aiesst.extensions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,5 +17,4 @@ final class JsDataStore {
     public static String getData(String key) {
         return JsDataStore.allData.get(key);
     }
-
 }

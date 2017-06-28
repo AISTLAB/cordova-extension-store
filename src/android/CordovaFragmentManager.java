@@ -1,4 +1,4 @@
-package com.aiesst.extentions;
+package com.aiesst.extensions;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -13,8 +13,7 @@ import org.json.JSONObject;
 /**
  * Created by ychost on 17-6-22.
  */
-
-class CordovaFragmentManager extends Extention {
+class CordovaFragmentManager extends Extension {
     static final String TAG = "CordovaFragmentManager";
     public static final String FRAGMENT_TAG = "PaySystemFragment";
     public static String FROM_FRAGMENT_TAG = "";
@@ -64,7 +63,6 @@ class CordovaFragmentManager extends Extention {
         if (fromFragment != null) {
             transaction.hide(fromFragment);
         }
-
         //显示支付系统的fragment
         Fragment webFragment = activity.getFragmentManager().findFragmentByTag(FRAGMENT_TAG);
         if (webFragment != null && webFragment.isAdded()) {
@@ -75,7 +73,7 @@ class CordovaFragmentManager extends Extention {
                 json.put("cmd", "token");
                 json.put("data", token);
                 //直接调用js的方法，将token发送过去
-                ExtentionStore.jsFunction.success(json.toString());
+                ExtensionStore.jsFunction.success(json.toString());
             } catch (Exception e) {
                 Log.e(TAG, "更新token失败");
             }
@@ -88,10 +86,7 @@ class CordovaFragmentManager extends Extention {
         transaction.commit();
     }
 
-
     public interface ConfigPaySystemTransaction {
         void config(FragmentTransaction transaction);
     }
-
-
 }

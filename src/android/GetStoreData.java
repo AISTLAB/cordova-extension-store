@@ -1,17 +1,13 @@
-package com.aiesst.extentions;
+package com.aiesst.extensions;
 
 import android.app.Activity;
 
 import org.apache.cordova.CallbackContext;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by ychost on 17-6-22.
  */
-
-class GetStoreData extends Extention {
+class GetStoreData extends Extension {
     public GetStoreData(Activity activity) {
         super(activity);
     }
@@ -27,6 +23,4 @@ class GetStoreData extends Extention {
         }
         return true;
     }
-
-
 }
